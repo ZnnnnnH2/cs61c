@@ -7,7 +7,10 @@
 #include <string.h>
 
 char *alloc_str(int len) {
-    return malloc(len*sizeof(char));
+//     return malloc(len*sizeof(char));
+    char *data = malloc((len+1)*sizeof(char));
+    data[len] = '\0'; // Null-terminate the string
+    return data;
 }
 
 /* Str helper functions */
@@ -72,5 +75,7 @@ int main(int argc, char*argv[]) {
     printf("Input string: \"%s\"\n", src_str.data);
     printf("Length of translated string: %d\n", dest_str.len);
     printf("Translate to Bork: \"%s\"\n", dest_str.data);
+
+    free_Str(dest_str);
     return 0;
 }
